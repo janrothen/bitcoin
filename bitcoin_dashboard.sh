@@ -1,9 +1,28 @@
 #!/bin/bash
 
+CPU_TEMP_RAW=$(cat /sys/class/thermal/thermal_zone0/temp)
+CPU_TEMP=$(echo "scale=1; $CPU_TEMP_RAW / 1000" | bc)
+LOAD_AVG=$(cut -d " " -f1-3 /proc/loadavg)
+
+MEM_TOTAL=$(free -h | awk '/^Mem:/ {print $2}')
+MEM_USED=$(free -h | awk '/^Mem:/ {print $3}')
+MEM_FREE=$(free -h | awk '/^Mem:/ {print $4}')
+echo "🧠 RAM Usage : $MEM_USED / $MEM_TOTAL used (free: $MEM_FREE)"
+ROOT_DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2 " used (" $5 ")"}')
+echo "💾 Disk Root : $ROOT_DISK"
+
 echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "🟢 Welcome to LasVegas Bitcoin Node Dashboard"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "                   LasVegas Bitcoin Fullnode Dashboard"
+echo "                   -----------------------------------"
+echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀     Refreshed: $(date)"
+echo "⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀     CPU load $LOAD_AVG, temp $CPU_TEMP°C"
+echo "⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿⠀     Free Mem 3072M/ 3792M, SSD $ROOT_DISK"
+echo "⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟⠀ "
+echo "⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀ "
+echo "⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧ "
+echo "⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿ "
+echo "⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁ "
+echo "⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀ "
 
 echo ""
 echo "🕒 Date      : $(date)"
@@ -12,18 +31,6 @@ echo "📦 Hostname  : $(hostname)"
 echo "🌐 IP Addr   : $(hostname -I | awk '{print $1}')"
 echo ""
 
-# CPU Temp
-CPU_TEMP_RAW=$(cat /sys/class/thermal/thermal_zone0/temp)
-CPU_TEMP=$(echo "scale=1; $CPU_TEMP_RAW / 1000" | bc)
-echo "🌡 CPU Temp  : $CPU_TEMP°C"
-
-# Load average
-LOAD_AVG=$(cut -d " " -f1-3 /proc/loadavg)
-echo "⚙️  Load Avg  : $LOAD_AVG"
-
-# Disk usage
-ROOT_DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2 " used (" $5 ")"}')
-echo "💾 Disk Root : $ROOT_DISK"
 
 BLOCKCHAIN_DISK=$(du -sh ~/.bitcoin 2>/dev/null | awk '{print $1}')
 BLOCKCHAIN_TOTAL=$(df -h ~/.bitcoin | awk 'NR==2 {print $2}')
