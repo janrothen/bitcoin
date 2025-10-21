@@ -16,7 +16,7 @@ MEM_AVAILABLE_MB=$((MEM_AVAILABLE / 1024))
 MEM_USED_MB=$((MEM_USED / 1024))
 
 echo ""
-echo "                  LasVegas Bitcoin Fullnode Dashboard"
+echo -e "${ORANGE}                  LasVegas Bitcoin Fullnode Dashboard${RESET}"
 echo -e "${ORANGE} ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     ${RESET}-----------------------------------"
 echo -e "${ORANGE} ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   ${RESET}Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
 echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    ${RESET}Uptime    : $(uptime -p)"   
