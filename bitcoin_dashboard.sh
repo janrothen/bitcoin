@@ -8,11 +8,10 @@ ROOT_DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2 " (used: " $5 ")"}')
 
 MEM_TOTAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 MEM_AVAILABLE=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
-MEM_FREE=$(grep MemFree /proc/meminfo | awk '{print $2}')
 MEM_USED=$((MEM_TOTAL - MEM_AVAILABLE))
 MEM_TOTAL_MB=$((MEM_TOTAL / 1024))
+MEM_AVAILABLE_MB=$((MEM_AVAILABLE / 1024))
 MEM_USED_MB=$((MEM_USED / 1024))
-MEM_FREE_MB=$((MEM_FREE / 1024))
 
 echo ""
 echo "                  LasVegas Bitcoin Fullnode Dashboard"
@@ -20,7 +19,7 @@ echo "                  -----------------------------------"
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
 echo " ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   Uptime    : $(uptime -p)"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    "   
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    RAM $MEM_USED_MB / $MEM_TOTAL_MB used (free: $MEM_FREE_MB), SSD $ROOT_DISK"
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    RAM $MEM_USED_MB / $MEM_TOTAL_MB used (available: $MEM_AVAILABLE_MB), SSD $ROOT_DISK"
 echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   CPU load $LOAD_AVG, temp $CPU_TEMP°C"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   "
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   "
