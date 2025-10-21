@@ -34,6 +34,11 @@ echo ""
 
 # Bitcoin status
 if command -v bitcoin-cli &> /dev/null; then
+
+  # Bitcoin Core version
+  LOCAL_VERSION=$(bitcoin-cli getnetworkinfo | jq -r .subversion | sed 's|/||g' | cut -d: -f2)
+  LATEST_VERSION=$(curl -s https://api.github.com/repos/bitcoin/bitcoin/releases/latest | jq -r .tag_name | sed 's/^v//')
+
   CHAIN=$(bitcoin-cli getblockchaininfo | jq -r .chain)
   BLOCKS=$(bitcoin-cli getblockchaininfo | jq -r .blocks)
   HEADERS=$(bitcoin-cli getblockchaininfo | jq -r .headers)
@@ -49,6 +54,12 @@ if command -v bitcoin-cli &> /dev/null; then
   BAR+=$(printf "%0.s░" $(seq 1 $EMPTY))
 
   echo "₿ Bitcoin Core status:"
+    echo -e "   • Version    : ${ORANGE}${LOCAL_VERSION}${RESET}"
+  if [ "$LOCAL_VERSION" != "$LATEST_VERSION" ]; then
+    echo -e "   • Update     : ${ORANGE}New version available: $LATEST_VERSION${RESET}"
+  else
+    echo -e "   • Update     : Up to date"
+  fi
   echo "   • Chain      : $CHAIN"
   echo "   • Blocks     : $BLOCKS"
   echo "   • Headers    : $HEADERS"
