@@ -22,19 +22,13 @@ echo "                  LasVegas Bitcoin Fullnode Dashboard"
 echo "                  -----------------------------------"
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     Refreshed: $(date)"
 echo " ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   CPU load $LOAD_AVG, temp $CPU_TEMP°C"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿⠀   Free Mem 3072M/ 3792M, SSD $ROOT_DISK"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟⠀ "
-echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀ "
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧ "
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿⡇⠀  Free Mem 3072M/ 3792M, SSD $ROOT_DISK"
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟ "
+echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   Uptime    : $(uptime -p)" 
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   Hostname  : $(hostname), IP addr   : $(hostname -I | awk '{print $1}')"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿ "
 echo " ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁ "
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀ "
-
-echo ""
-echo "🔄 Uptime    : $(uptime -p)"
-echo "📦 Hostname  : $(hostname)"
-echo "🌐 IP Addr   : $(hostname -I | awk '{print $1}')"
-echo ""
 
 BLOCKCHAIN_DISK=$(du -sh ~/.bitcoin 2>/dev/null | awk '{print $1}')
 BLOCKCHAIN_TOTAL=$(df -h ~/.bitcoin | awk 'NR==2 {print $2}')
