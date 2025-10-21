@@ -15,19 +15,17 @@ MEM_TOTAL_MB=$((MEM_TOTAL / 1024))
 MEM_AVAILABLE_MB=$((MEM_AVAILABLE / 1024))
 MEM_USED_MB=$((MEM_USED / 1024))
 
-\e[38;2;247;147;26mThis is Bitcoin orange text!
-
 echo ""
 echo "                  LasVegas Bitcoin Fullnode Dashboard"
-echo "${ORANGE} ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     ${RESET}-----------------------------------"
-echo "${ORANGE} ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   ${RESET}Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
-echo "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    ${RESET}Uptime    : $(uptime -p)"   
-echo "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    ${RESET}"
-echo "${ORANGE} ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   ${RESET}RAM $MEM_USED_MB / $MEM_TOTAL_MB used (available: $MEM_AVAILABLE_MB)"
-echo "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   ${RESET}CPU load $LOAD_AVG, temp $CPU_TEMP°C"
-echo "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   ${RESET}SSD $ROOT_DISK"
-echo "${ORANGE} ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁   ${RESET}"
-echo "${ORANGE} ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀   ${RESET}Refreshed: $(date)"
+echo -e "${ORANGE} ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     ${RESET}-----------------------------------"
+echo -e "${ORANGE} ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   ${RESET}Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
+echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    ${RESET}Uptime    : $(uptime -p)"   
+echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    ${RESET}"
+echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   ${RESET}RAM $MEM_USED_MB / $MEM_TOTAL_MB used (available: $MEM_AVAILABLE_MB)"
+echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   ${RESET}CPU load $LOAD_AVG, temp $CPU_TEMP°C"
+echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   ${RESET}SSD $ROOT_DISK"
+echo -e "${ORANGE} ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁   ${RESET}"
+echo -e "${ORANGE} ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀   ${RESET}Refreshed: $(date)"
 echo ""
 BLOCKCHAIN_DISK=$(du -sh ~/.bitcoin 2>/dev/null | awk '{print $1}')
 BLOCKCHAIN_TOTAL=$(df -h ~/.bitcoin | awk 'NR==2 {print $2}')
