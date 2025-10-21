@@ -11,9 +11,9 @@ MEM_TOTAL=$(echo "$MEM_LINE" | awk '{print $2}')
 MEM_FREE=$(grep MemFree /proc/meminfo | awk '{print $2}')
 MEM_AVAILABLE=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
 MEM_USED=$((MEM_TOTAL - MEM_AVAILABLE))
-MEM_TOTAL_HR=$(numfmt --to=iec --suffix=B $((MEM_TOTAL * 1024)))
-MEM_USED_HR=$(numfmt --to=iec --suffix=B $((MEM_USED * 1024)))
-MEM_FREE_HR=$(numfmt --to=iec --suffix=B $((MEM_FREE * 1024)))
+MEM_TOTAL_HR=$(numfmt --to=iec $((MEM_TOTAL * 1024)))
+MEM_USED_HR=$(numfmt --to=iec $((MEM_USED * 1024)))
+MEM_FREE_HR=$(numfmt --to=iec $((MEM_FREE * 1024)))
 
 echo "🧠 RAM Usage : $MEM_USED_HR / $MEM_TOTAL_HR used (free: $MEM_FREE_HR)"
 
@@ -22,13 +22,13 @@ echo "                  LasVegas Bitcoin Fullnode Dashboard"
 echo "                  -----------------------------------"
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
 echo " ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   Uptime    : $(uptime -p)"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿⠀"   
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    "   
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    Free Mem 3072M/ 3792M, SSD $ROOT_DISK"
 echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   CPU load $LOAD_AVG, temp $CPU_TEMP°C"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   "
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿ "
-echo " ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁ "
-echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀ Refreshed: $(date)"
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   "
+echo " ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁   "
+echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀   Refreshed: $(date)"
 
 BLOCKCHAIN_DISK=$(du -sh ~/.bitcoin 2>/dev/null | awk '{print $1}')
 BLOCKCHAIN_TOTAL=$(df -h ~/.bitcoin | awk 'NR==2 {print $2}')
