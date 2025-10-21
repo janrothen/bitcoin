@@ -21,7 +21,7 @@ echo " ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   Uptime    : $(uptime -p)"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    "   
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    RAM $MEM_USED_MB / $MEM_TOTAL_MB used (available: $MEM_AVAILABLE_MB)"
 echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   CPU load $LOAD_AVG, temp $CPU_TEMP°C"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   SSD $ROOT_DISK
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   SSD $ROOT_DISK"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   "
 echo " ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁   "
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀   Refreshed: $(date)"
