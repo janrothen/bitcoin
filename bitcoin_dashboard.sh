@@ -13,18 +13,20 @@ MEM_TOTAL_MB=$((MEM_TOTAL / 1024))
 MEM_AVAILABLE_MB=$((MEM_AVAILABLE / 1024))
 MEM_USED_MB=$((MEM_USED / 1024))
 
-echo ""                
-echo "                  LasVegas Bitcoin Fullnode Dashboard"
-echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     -----------------------------------"
-echo " ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    Uptime    : $(uptime -p)"   
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    "
-echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   RAM $MEM_USED_MB / $MEM_TOTAL_MB used (available: $MEM_AVAILABLE_MB)"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   CPU load $LOAD_AVG, temp $CPU_TEMP°C"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   SSD $ROOT_DISK"
-echo " ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁   "
-echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀   Refreshed: $(date)"
+\e[38;2;247;147;26mThis is Bitcoin orange text!
 
+echo ""
+echo "                  LasVegas Bitcoin Fullnode Dashboard"
+echo "\e[38;2;247;147;26m ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     \e[0m-----------------------------------"
+echo "\e[38;2;247;147;26m ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   \e[0mHostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
+echo "\e[38;2;247;147;26m ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    \e[0mUptime    : $(uptime -p)"   
+echo "\e[38;2;247;147;26m ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟    \e[0m"
+echo "\e[38;2;247;147;26m ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   \e[0mRAM $MEM_USED_MB / $MEM_TOTAL_MB used (available: $MEM_AVAILABLE_MB)"
+echo "\e[38;2;247;147;26m ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   \e[0mCPU load $LOAD_AVG, temp $CPU_TEMP°C"
+echo "\e[38;2;247;147;26m ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿   \e[0mSSD $ROOT_DISK"
+echo "\e[38;2;247;147;26m ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁   \e[0m"
+echo "\e[38;2;247;147;26m ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀   \e[0mRefreshed: $(date)"
+echo ""
 BLOCKCHAIN_DISK=$(du -sh ~/.bitcoin 2>/dev/null | awk '{print $1}')
 BLOCKCHAIN_TOTAL=$(df -h ~/.bitcoin | awk 'NR==2 {print $2}')
 echo "📀 Blockchain: $BLOCKCHAIN_DISK / $BLOCKCHAIN_TOTAL used"
