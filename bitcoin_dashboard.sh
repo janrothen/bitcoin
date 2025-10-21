@@ -9,13 +9,20 @@ ROOT_DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2 " (used: " $5 ")"}')
 MEM_LINE=$(grep Mem: /proc/meminfo)
 MEM_TOTAL=$(echo "$MEM_LINE" | awk '{print $2}')
 MEM_FREE=$(grep MemFree /proc/meminfo | awk '{print $2}')
+echo "*1"
 MEM_AVAILABLE=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
+echo "*2"
 MEM_USED=$((MEM_TOTAL - MEM_AVAILABLE))
+echo "*3"
 MEM_TOTAL_HR=$(numfmt --to=iec $((MEM_TOTAL * 1024)))
+echo "*4"
 MEM_USED_HR=$(numfmt --to=iec $((MEM_USED * 1024)))
+echo "*5"
 MEM_FREE_HR=$(numfmt --to=iec $((MEM_FREE * 1024)))
+echo "*6"
 
 echo "🧠 RAM Usage : $MEM_USED_HR / $MEM_TOTAL_HR used (free: $MEM_FREE_HR)"
+echo "*7"
 
 echo ""
 echo "                  LasVegas Bitcoin Fullnode Dashboard"
