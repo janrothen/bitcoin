@@ -4,7 +4,7 @@ CPU_TEMP_RAW=$(cat /sys/class/thermal/thermal_zone0/temp)
 CPU_TEMP=$(echo "scale=1; $CPU_TEMP_RAW / 1000" | bc)
 LOAD_AVG=$(cut -d " " -f1-3 /proc/loadavg)
 
-ROOT_DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2 " used (" $5 ")"}')
+ROOT_DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2 " (used: " $5 ")"}')
 
 MEM_LINE=$(grep Mem: /proc/meminfo)
 MEM_TOTAL=$(echo "$MEM_LINE" | awk '{print $2}')
@@ -22,10 +22,10 @@ echo "                  LasVegas Bitcoin Fullnode Dashboard"
 echo "                  -----------------------------------"
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     Refreshed: $(date)"
 echo " ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   CPU load $LOAD_AVG, temp $CPU_TEMP°C"
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿⡇⠀  Free Mem 3072M/ 3792M, SSD $ROOT_DISK"
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿⠀   Free Mem 3072M/ 3792M, SSD $ROOT_DISK"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⢀⣠⣿⣿⠟ "
 echo " ⠀⠀⢸⣿⣿⡿⠿⠿⠿⣿⣿⣥⣄⠀   Uptime    : $(uptime -p)" 
-echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   Hostname  : $(hostname), IP addr   : $(hostname -I | awk '{print $1}')"
+echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⢻⣿⣿⣧   Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
 echo " ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⣼⣿⣿⣿ "
 echo " ⢰⣶⣿⣿⣿⣷⣶⣶⣾⣿⣿⠿⠛⠁ "
 echo " ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀⠀⠀ "
