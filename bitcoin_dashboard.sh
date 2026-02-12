@@ -47,7 +47,7 @@ MEM_AVAILABLE_MB=$((MEM_AVAILABLE / 1024))
 MEM_USED_MB=$((MEM_USED / 1024))
 
 echo ""
-echo -e "${ORANGE}                  LasVegas Bitcoin Fullnode Dashboard${RESET}"
+echo -e "${ORANGE}                  LasVegas ₿itcoin Fullnode Dashboard${RESET}"
 echo -e "${ORANGE} ⠀⠀⠀⠀⣿⡇⠀⢸⣿⡇⠀⠀     ${RESET}-----------------------------------"
 echo -e "${ORANGE} ⠸⠿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣶⣄⠀   ${RESET}Hostname  : $(hostname) / $(hostname -I | awk '{print $1}')"
 echo -e "${ORANGE} ⠀⠀⢸⣿⣿⡇⠀⠀⠀⠈⣿⣿⣿    ${RESET}Uptime    : $(uptime -p)"   
@@ -77,7 +77,7 @@ if command -v bitcoin-cli &> /dev/null; then
   RAW_PROGRESS=$(bitcoin-cli getblockchaininfo | jq -r .verificationprogress)
   PROGRESS_PERCENT=$(echo "$RAW_PROGRESS * 100" | bc -l | awk '{printf "%.2f", $1}')
 
-  echo "₿ Bitcoin Core status:"
+  echo "Bitcoin Core status:"
     echo -e "   • Version    : ${ORANGE}${LOCAL_VERSION}${RESET}"
   if is_newer_version "$LOCAL_VERSION" "$LATEST_VERSION"; then
     echo -e "   • Update     : ${ORANGE}New version available: $LATEST_VERSION${RESET}"
@@ -112,7 +112,7 @@ if command -v bitcoin-cli &> /dev/null; then
   TOR_ADDR=$(bitcoin-cli getnetworkinfo | jq -r '.localaddresses[]? | select(.address | endswith(".onion")) | .address')
 
   echo ""
-  echo "📡 Bitcoin Network Info:"
+  echo "Bitcoin network info:"
   echo "   • Peers       : $CONNECTIONS"
   echo "   • Mempool txs : $MEMPOOL_SIZE"
   echo "   • Uptime      : $((BTC_UPTIME / 3600))h $(( (BTC_UPTIME % 3600) / 60))m"
